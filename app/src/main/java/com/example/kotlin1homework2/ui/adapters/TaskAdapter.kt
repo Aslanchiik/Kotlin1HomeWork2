@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlin1homework2.databinding.ItemImageBinding
-import com.squareup.picasso.Picasso
+import com.example.kotlin1homework2.utils.setImagePic
 
 class TaskAdapter : ListAdapter<String, TaskAdapter.ViewHolder>(diffCallback) {
 
@@ -15,8 +15,7 @@ class TaskAdapter : ListAdapter<String, TaskAdapter.ViewHolder>(diffCallback) {
     class ViewHolder(private val binding: ItemImageBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(it: String) {
-            Picasso.get().load(it).into(binding.itemImage)
-
+            binding.itemImage.setImagePic(it)
         }
 
     }

@@ -1,4 +1,4 @@
-package com.example.kotlin1homework2.ui.fragments
+package com.example.kotlin1homework2.ui.fragments.second
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -13,9 +13,9 @@ import com.example.kotlin1homework2.ui.fragments.first.SharedViewModel
 
 class SecondFragments : Fragment() {
 
-    lateinit var binding: FragmentSecondFragmentsBinding
-    private val viewModel : SharedViewModel by activityViewModels()
-    private val taskAdapter :TaskAdapter = TaskAdapter()
+    private lateinit var binding: FragmentSecondFragmentsBinding
+    private val viewModel: SharedViewModel by activityViewModels()
+    private val taskAdapter: TaskAdapter = TaskAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,9 +40,8 @@ class SecondFragments : Fragment() {
     }
 
     private fun setupObserves() {
-        viewModel.data.observe(viewLifecycleOwner, {
+        viewModel.list.observeForever {
             taskAdapter.submitList(it)
-        })
+        }
     }
-
 }
